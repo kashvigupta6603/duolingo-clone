@@ -44,7 +44,9 @@ class AnswerIn(BaseModel):
 class CompleteIn(BaseModel):
     mistakes: int = 0
 
-
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "duolingo-clone-api"}
 # ---------------- user / path ----------------
 @app.get("/api/me")
 def get_me(db: Session = Depends(get_db), u: User = Depends(me)):
