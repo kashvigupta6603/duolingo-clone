@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import UserProvider from "@/components/UserProvider";
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={nunito.variable}>
       <body>
         <UserProvider>
-          <Shell>{children}</Shell>
+          <Suspense fallback={null}>
+            <Shell>{children}</Shell>
+          </Suspense>
         </UserProvider>
       </body>
     </html>
